@@ -51,7 +51,7 @@ end
 private def scanner
   LuckySecTester.new
 end
-``
+```
 
 
 ## Development
