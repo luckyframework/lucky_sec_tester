@@ -36,7 +36,7 @@ class LuckySecTester
 
   def build_target(route : Lucky::RouteHelper)
     target = SecTester::Target.new(
-      method: route.method.to_s,
+      method: route.method.to_s.upcase,
       url: route.url,
       headers: HTTP::Headers{
         "Content-Type" => "application/x-www-form-urlencoded",
