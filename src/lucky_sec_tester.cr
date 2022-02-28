@@ -40,7 +40,7 @@ class LuckySecTester
       url: route.url,
       headers: HTTP::Headers{
         "Content-Type" => "application/x-www-form-urlencoded",
-        "Host"         => Lucky::RouteHelper.settings.base_uri,
+        "Host"         => URI.parse(Lucky::RouteHelper.settings.base_uri).hostname.to_s,
       }
     )
     yield target
