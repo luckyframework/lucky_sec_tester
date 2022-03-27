@@ -51,7 +51,7 @@ class LuckySecTester
 
     HTTP::Headers{
       "Content-Type" => content_type,
-      "Host"         => Lucky::RouteHelper.settings.base_uri,
+      "Host"         => URI.parse(Lucky::RouteHelper.settings.base_uri).hostname.to_s,
     }
   end
 end
