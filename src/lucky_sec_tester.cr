@@ -8,42 +8,50 @@ class LuckySecTester
     setting nexploit_token : String, example: "abc.nexp.123secret"
   end
 
-  getter client : SecTester::Test
-
-  delegate :run_check, :cleanup, to: @client
-
-  def initialize
-    @client = SecTester::Test.new(settings.nexploit_token)
+  getter client : SecTester::Test do
+    SecTester::Test.new(settings.nexploit_token)
   end
+
+  delegate :run_check, :cleanup, to: client
 
   def build_target
     SecTester::Target.new(Lucky::RouteHelper.settings.base_uri)
   end
 
-  def build_target(action : Lucky::Action.class)
-    build_target(action.route) { |target| target }
+  def build_target(action : Lucky::Action.class, *, headers : HTTP::Headers = HTTP::Headers.new)
+    build_target(action.route, headers: headers) { |target| target }
   end
 
-  def build_target(action : Lucky::Action.class)
-    build_target(action.route) do |target|
+  def build_target(action : Lucky::Action.class, *, headers : HTTP::Headers = HTTP::Headers.new)
+    build_target(action.route, headers: headers) do |target|
       yield target
     end
   end
 
-  def build_target(route : Lucky::RouteHelper)
-    build_target(route) { |target| target }
+  def build_target(route : Lucky::RouteHelper, *, headers : HTTP::Headers = HTTP::Headers.new)
+    build_target(route, headers: headers) { |target| target }
   end
 
-  def build_target(route : Lucky::RouteHelper)
+  def build_target(route : Lucky::RouteHelper, *, headers : HTTP::Headers = HTTP::Headers.new)
     target = SecTester::Target.new(
       method: route.method.to_s,
       url: route.url,
-      headers: HTTP::Headers{
-        "Content-Type" => "application/x-www-form-urlencoded",
-        "Host"         => Lucky::RouteHelper.settings.base_uri,
-      }
+      headers: default_headers_for_method(route.method.to_s).merge!(headers)
     )
     yield target
     target
+  end
+
+  private def default_headers_for_method(method : String) : HTTP::Headers
+    content_type = if method.downcase == "get"
+                     "text/html"
+                   else
+                     "application/x-www-form-urlencoded"
+                   end
+
+    HTTP::Headers{
+      "Content-Type" => content_type,
+      "Host"         => URI.parse(Lucky::RouteHelper.settings.base_uri).hostname.to_s,
+    }
   end
 end
