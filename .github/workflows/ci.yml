@@ -45,9 +45,6 @@ jobs:
       - name: Install dependencies
         run: shards install
       - name: Fake the nexploit-cli
-        run: |
-          touch /usr/bin/nexploit-cli
-          echo '#!/usr/bin/env' > /usr/bin/nexploit-cli
-          chmod +x /usr/bin/nexploit-cli
+        run: echo '#!/usr/bin/env' > /usr/bin/nexploit-cli && chmod +x /usr/bin/nexploit-cli
       - name: Run tests
         run: crystal spec
