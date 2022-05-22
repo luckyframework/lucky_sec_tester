@@ -1,6 +1,6 @@
 # lucky_sec_tester
 
-LuckySecTester is a thin wrapper around the [NeuraLegion SecTester](https://github.com/NeuraLegion/sec_tester) used to ensure a smooth Lucky integration.
+LuckySecTester is a thin wrapper around the [Bright SecTester](https://github.com/NeuraLegion/sec-tester-cr) used to ensure a smooth Lucky integration.
 
 Use this in your specs and CI to test security vulnerabilities.
 
@@ -20,7 +20,6 @@ Use this in your specs and CI to test security vulnerabilities.
 
 `npm install -g @neuralegion/nexploit-cli`
 
-
 ## Usage
 
 Create a new file in `spec/setup/sec_tester.cr`
@@ -30,7 +29,7 @@ Create a new file in `spec/setup/sec_tester.cr`
 require "lucky_sec_tester"
 
 LuckySecTester.configure do |settings|
-  settings.nexploit_token = ENV["NEXPLOIT_API_TOKEN"]
+  settings.bright_token = ENV["BRIGHT_TOKEN"]
 end
 ```
 
@@ -52,7 +51,6 @@ private def scanner
   LuckySecTester.new
 end
 ```
-
 
 ## Development
 

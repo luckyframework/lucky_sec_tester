@@ -5,11 +5,11 @@ class LuckySecTester
   VERSION = "0.1.0"
 
   Habitat.create do
-    setting nexploit_token : String, example: "abc.nexp.123secret"
+    setting bright_token : String, example: "abc.nexp.123secret"
   end
 
   getter client : SecTester::Test do
-    SecTester::Test.new(settings.nexploit_token)
+    SecTester::Test.new(settings.bright_token)
   end
 
   delegate :run_check, :cleanup, to: client
