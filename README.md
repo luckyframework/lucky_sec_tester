@@ -29,7 +29,11 @@ Create a new file in `spec/setup/sec_tester.cr`
 require "lucky_sec_tester"
 
 LuckySecTester.configure do |settings|
+  # This is your API key
   settings.bright_token = ENV["BRIGHT_TOKEN"]
+  # Your project ID which could be environment based, or for app specific
+  # if your company has many projects
+  settings.project_id = LuckyEnv.staging? "staging-id123" : "default-id123"
 end
 ```
 
