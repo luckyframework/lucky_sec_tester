@@ -6,7 +6,7 @@ class LuckySecTester
 
   Habitat.create do
     setting bright_token : String, example: "abc.nexp.123secret"
-    setting project_id : String?, example: "ufNQ7Fo4XAFBsuyGpo6YTz"
+    setting project_id : String, example: "ufNQ7Fo4XAFBsuyGpo6YTz"
   end
 
   getter client : SecTester::Test do
