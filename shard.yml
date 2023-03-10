@@ -1,11 +1,11 @@
 name: lucky_sec_tester
-version: 0.1.0
+version: 0.2.0
 
 authors:
   - Jeremy Woertink <jeremywoertink@gmail.com>
   - Bar Hofesh <bar.hofesh@gmail.com>
 
-crystal: ">= 1.4.0"
+crystal: ">= 1.6.0"
 
 license: MIT
 
@@ -15,9 +15,9 @@ dependencies:
     version: 0.4.7
   sec_tester:
     github: NeuraLegion/sec-tester-cr
-    version: ~> 1.3.4
+    version: ~> 1.4.0
 
 development_dependencies:
   ameba:
     github: crystal-ameba/ameba
-    version: ~> 1.1.0
+    version: ~> 1.3.0
