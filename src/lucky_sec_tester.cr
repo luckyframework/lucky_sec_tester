@@ -23,7 +23,7 @@ class LuckySecTester
     build_target(action.route, headers: headers) { |target| target }
   end
 
-  def build_target(action : Lucky::Action.class, *, headers : HTTP::Headers = HTTP::Headers.new)
+  def build_target(action : Lucky::Action.class, *, headers : HTTP::Headers = HTTP::Headers.new, &)
     build_target(action.route, headers: headers) do |target|
       yield target
     end
@@ -33,7 +33,7 @@ class LuckySecTester
     build_target(route, headers: headers) { |target| target }
   end
 
-  def build_target(route : Lucky::RouteHelper, *, headers : HTTP::Headers = HTTP::Headers.new)
+  def build_target(route : Lucky::RouteHelper, *, headers : HTTP::Headers = HTTP::Headers.new, &)
     target = SecTester::Target.new(
       method: route.method.to_s,
       url: route.url,
