@@ -16,10 +16,6 @@ Use this in your specs and CI to test security vulnerabilities.
 
 2. Run `shards install`
 
-3. Install the [Nexploit CLI](https://www.npmjs.com/package/@neuralegion/nexploit-cli) tool
-
-`npm install -g @neuralegion/nexploit-cli`
-
 ## Usage
 
 Create a new file in `spec/setup/sec_tester.cr`
