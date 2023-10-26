@@ -5,17 +5,17 @@ authors:
   - Jeremy Woertink <jeremywoertink@gmail.com>
   - Bar Hofesh <bar.hofesh@gmail.com>
 
-crystal: ">= 1.6.0"
+crystal: ~> 1.6
 
 license: MIT
 
 dependencies:
   habitat:
     github: luckyframework/habitat
-    version: ~> 0.4.8
+    version: ">= 0.4.7, < 0.5"
   sec_tester:
     github: NeuraLegion/sec-tester-cr
-    version: ~> 1.6.1
+    version: ">= 1.6.1, < 1.7"
 
 development_dependencies:
   ameba:
