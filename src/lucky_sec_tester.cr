@@ -2,7 +2,7 @@ require "habitat"
 require "sec_tester"
 
 class LuckySecTester
-  VERSION = "0.3.1"
+  VERSION = "0.3.2"
 
   Habitat.create do
     setting bright_token : String, example: "abc.nexp.123secret"
