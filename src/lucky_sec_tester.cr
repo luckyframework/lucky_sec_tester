@@ -13,7 +13,7 @@ class LuckySecTester
     SecTester::Test.new(settings.bright_token)
   end
 
-  delegate :run_check, :cleanup, to: client
+  delegate :run_check, to: client
 
   def build_target
     SecTester::Target.new(Lucky::RouteHelper.settings.base_uri)
